@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Chapter Player</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>Chapter Player</h1>
+  <div id="auth-area">
+    <button id="signin-btn">Sign in with Google</button>
+    <button id="signout-btn" class="hidden">Sign out</button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="playlists">Playlists</button>
+  <button class="tab-btn" data-tab="now-playing">Now playing</button>
+</nav>
+
+<main>
+
+  <section id="tab-playlists" class="tab-panel active">
+    <p id="playlists-status" class="hint">Sign in to load your playlists.</p>
+    <div id="playlists-list" class="list"></div>
+
+    <div id="playlist-items-view" class="hidden">
+      <button id="back-to-playlists">&larr; Playlists</button>
+      <h2 id="playlist-items-title"></h2>
+      <div id="playlist-items-list" class="list"></div>
+    </div>
+  </section>
+
+  <section id="tab-now-playing" class="tab-panel">
+    <form id="load-form" class="load-form">
+      <input id="video-url-input" type="text" placeholder="Paste a YouTube video URL or ID" />
+      <button type="submit">Load</button>
+    </form>
+
+    <div class="player-card">
+      <div id="player"></div>
+
+      <div class="now-playing-meta">
+        <p id="video-title" class="video-title"></p>
+        <p id="chapter-status" class="hint"></p>
+      </div>
+
+      <div class="transport">
+        <button id="repeat-track-btn" title="Repeat whole track">Repeat track</button>
+        <button id="prev-chapter-btn" title="Previous chapter">&#9664;&#9664;</button>
+        <button id="play-pause-btn" title="Play/pause">Play</button>
+        <button id="next-chapter-btn" title="Next chapter">&#9654;&#9654;</button>
+        <button id="loop-chapter-btn" title="Loop this chapter">Loop chapter</button>
+      </div>
+
+      <div class="chapters-header">
+        <p class="hint">Chapters</p>
+      </div>
+      <div id="chapters-list" class="list chapters-list"></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="config.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="app.js"></script>
+</body>
+</html>
