@@ -356,14 +356,22 @@ function startBoundaryTimer() {
   boundaryTimer = setInterval(() => {
     if (!player || typeof player.getCurrentTime !== "function" || !chapters.length) return;
     const t = player.getCurrentTime();
-    const idx = currentChapterIndex(t);
-    updateActiveChapterUI(idx);
-    if (loopChapter && idx >= 0) {
-      const ch = chapters[idx];
-      if (t >= ch.end - 0.15) {
-        player.seekTo(ch.start, true);
+
+    // Pin the loop to the chapter we last knew we were in, rather than
+    // recomputing from raw time first — the 400ms poll interval is coarser
+    // than a narrow end-of-chapter window, so by the time we poll again
+    // playback has often already crossed into the next chapter's range,
+    // and re-deriving the index from time alone would silently start
+    // "looping" that next chapter instead of seeking back.
+    if (loopChapter && activeChapterIndex >= 0) {
+      const loopingChapter = chapters[activeChapterIndex];
+      if (t >= loopingChapter.end) {
+        player.seekTo(loopingChapter.start, true);
+        return;
       }
     }
+
+    updateActiveChapterUI(currentChapterIndex(t));
   }, 400);
 }
 
