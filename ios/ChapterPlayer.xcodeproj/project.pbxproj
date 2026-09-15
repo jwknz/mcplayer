@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000000000000000000000021 /* ChapterPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000020 /* ChapterPlayerApp.swift */; };
+		000000000000000000000023 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000022 /* Config.swift */; };
+		000000000000000000000025 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000024 /* AuthManager.swift */; };
+		000000000000000000000027 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000026 /* KeychainStore.swift */; };
+		000000000000000000000029 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000028 /* Models.swift */; };
+		000000000000000000000031 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000030 /* YouTubeAPI.swift */; };
+		000000000000000000000033 /* ChapterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000032 /* ChapterParser.swift */; };
+		000000000000000000000035 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000034 /* PlayerView.swift */; };
+		000000000000000000000037 /* player.html in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000036 /* player.html */; };
+		000000000000000000000039 /* PlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000038 /* PlaylistsView.swift */; };
+		000000000000000000000041 /* PlaylistItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000040 /* PlaylistItemsView.swift */; };
+		000000000000000000000043 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000042 /* NowPlayingView.swift */; };
+		000000000000000000000046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000045 /* Assets.xcassets */; };
+		000000000000000000000048 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000047 /* AboutView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		000000000000000000000004 /* ChapterPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChapterPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000020 /* ChapterPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterPlayerApp.swift; sourceTree = "<group>"; };
+		000000000000000000000022 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		000000000000000000000024 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		000000000000000000000026 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		000000000000000000000028 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		000000000000000000000030 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
+		000000000000000000000032 /* ChapterParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterParser.swift; sourceTree = "<group>"; };
+		000000000000000000000034 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		000000000000000000000036 /* player.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = player.html; sourceTree = "<group>"; };
+		000000000000000000000038 /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
+		000000000000000000000040 /* PlaylistItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemsView.swift; sourceTree = "<group>"; };
+		000000000000000000000042 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		000000000000000000000044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000000000000000000000045 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		000000000000000000000047 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000000000000000000014 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000015 /* ChapterPlayer */,
+				000000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000004 /* ChapterPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		000000000000000000000015 /* ChapterPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000020 /* ChapterPlayerApp.swift */,
+				000000000000000000000022 /* Config.swift */,
+				000000000000000000000044 /* Info.plist */,
+				000000000000000000000045 /* Assets.xcassets */,
+				000000000000000000000016 /* Auth */,
+				000000000000000000000017 /* API */,
+				000000000000000000000018 /* Player */,
+				000000000000000000000019 /* Views */,
+			);
+			path = ChapterPlayer;
+			sourceTree = "<group>";
+		};
+		000000000000000000000016 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000024 /* AuthManager.swift */,
+				000000000000000000000026 /* KeychainStore.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		000000000000000000000017 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000028 /* Models.swift */,
+				000000000000000000000030 /* YouTubeAPI.swift */,
+				000000000000000000000032 /* ChapterParser.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		000000000000000000000018 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000034 /* PlayerView.swift */,
+				000000000000000000000036 /* player.html */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		000000000000000000000019 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000038 /* PlaylistsView.swift */,
+				000000000000000000000040 /* PlaylistItemsView.swift */,
+				000000000000000000000042 /* NowPlayingView.swift */,
+				000000000000000000000047 /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000005 /* ChapterPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000000000006 /* Build configuration list for PBXNativeTarget "ChapterPlayer" */;
+			buildPhases = (
+				000000000000000000000012 /* Sources */,
+				000000000000000000000014 /* Frameworks */,
+				000000000000000000000013 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChapterPlayer;
+			productName = ChapterPlayer;
+			productReference = 000000000000000000000004 /* ChapterPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					000000000000000000000005 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 000000000000000000000009 /* Build configuration list for PBXProject "ChapterPlayer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000000000000000000000002;
+			productRefGroup = 000000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000000000000000000005 /* ChapterPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000000000000000000000013 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000000037 /* player.html in Resources */,
+				000000000000000000000046 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000000000000000000012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000000021 /* ChapterPlayerApp.swift in Sources */,
+				000000000000000000000023 /* Config.swift in Sources */,
+				000000000000000000000025 /* AuthManager.swift in Sources */,
+				000000000000000000000027 /* KeychainStore.swift in Sources */,
+				000000000000000000000029 /* Models.swift in Sources */,
+				000000000000000000000031 /* YouTubeAPI.swift in Sources */,
+				000000000000000000000033 /* ChapterParser.swift in Sources */,
+				000000000000000000000035 /* PlayerView.swift in Sources */,
+				000000000000000000000039 /* PlaylistsView.swift in Sources */,
+				000000000000000000000041 /* PlaylistItemsView.swift in Sources */,
+				000000000000000000000043 /* NowPlayingView.swift in Sources */,
+				000000000000000000000048 /* AboutView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		000000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FG6U6DMQ28;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChapterPlayer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nz.jwk.mcplayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		000000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FG6U6DMQ28;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChapterPlayer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nz.jwk.mcplayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		000000000000000000000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		000000000000000000000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000000000000000000000006 /* Build configuration list for PBXNativeTarget "ChapterPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000000007 /* Debug */,
+				000000000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000000000000000000000009 /* Build configuration list for PBXProject "ChapterPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000000010 /* Debug */,
+				000000000000000000000011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000001 /* Project object */;
+}

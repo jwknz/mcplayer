@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html,body{margin:0;padding:0;background:#000;height:100%;overflow:hidden;}#player{width:100%;height:100%;}</style>
+</head>
+<body>
+<div id="player"></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+var player;
+var apiReady = false;
+var pendingVideoId = null;
+
+function post(msg) {
+  if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bridge) {
+    window.webkit.messageHandlers.bridge.postMessage(msg);
+  }
+}
+
+function createPlayer(videoId) {
+  player = new YT.Player('player', {
+    height: '100%',
+    width: '100%',
+    videoId: videoId,
+    playerVars: { rel: 0, playsinline: 1, origin: 'https://chapterplayer.app' },
+    events: {
+      onReady: function () {
+        post({ type: 'ready' });
+      },
+      onStateChange: function (e) {
+        var stateName = 'unknown';
+        if (e.data === YT.PlayerState.PLAYING) stateName = 'playing';
+        else if (e.data === YT.PlayerState.PAUSED) stateName = 'paused';
+        else if (e.data === YT.PlayerState.ENDED) stateName = 'ended';
+        post({ type: 'state', state: stateName });
+      },
+    },
+  });
+  setInterval(function () {
+    if (player && typeof player.getCurrentTime === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+      post({ type: 'time', time: player.getCurrentTime() });
+    }
+  }, 400);
+}
+
+// The player is deliberately not created until the first real video is
+// requested. Creating a YT.Player with no videoId at all leaves it in an
+// idle error placeholder that never fires onReady, so a later
+// loadVideoById call silently does nothing — passing the videoId straight
+// into the constructor avoids that state entirely.
+function onYouTubeIframeAPIReady() {
+  apiReady = true;
+  if (pendingVideoId) {
+    createPlayer(pendingVideoId);
+    pendingVideoId = null;
+  }
+}
+
+window.loadVideo = function (videoId) {
+  if (!apiReady) {
+    pendingVideoId = videoId;
+    return;
+  }
+  if (!player) {
+    createPlayer(videoId);
+    return;
+  }
+  player.loadVideoById(videoId);
+};
+window.seekTo = function (seconds) {
+  if (player) player.seekTo(seconds, true);
+};
+window.playVideo = function () {
+  if (player) player.playVideo();
+};
+window.pauseVideo = function () {
+  if (player) player.pauseVideo();
+};
+</script>
+</body>
+</html>
