@@ -17,6 +17,8 @@ let boundaryTimer = null;
 
 const el = (id) => document.getElementById(id);
 
+const AUTH_STORAGE_KEY = "chapterPlayerAuth";
+
 // ---------- Tabs ----------
 
 document.querySelectorAll(".tab-btn").forEach((btn) => {
@@ -30,6 +32,50 @@ function switchTab(name) {
 
 // ---------- Auth ----------
 
+// The access token itself lasts ~1hr regardless of storage — this only
+// avoids re-prompting on every reload within that window. There's no way
+// to persist sign-in beyond that without a backend holding a refresh
+// token (which needs the OAuth client secret, so it can't live in a
+// static front-end app).
+function saveAuth(token, expiresInSeconds) {
+  const expiresAt = Date.now() + (expiresInSeconds || 3600) * 1000;
+  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({ accessToken: token, expiresAt }));
+}
+
+function loadStoredAuth() {
+  try {
+    const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed.accessToken || !parsed.expiresAt) return null;
+    if (Date.now() >= parsed.expiresAt - 30000) {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function clearStoredAuth() {
+  localStorage.removeItem(AUTH_STORAGE_KEY);
+}
+
+function markSignedIn() {
+  el("signin-btn").classList.add("hidden");
+  el("signout-btn").classList.remove("hidden");
+}
+
+function markSignedOut() {
+  accessToken = null;
+  clearStoredAuth();
+  el("signin-btn").classList.remove("hidden");
+  el("signout-btn").classList.add("hidden");
+  el("playlists-status").textContent = "Sign in to load your playlists.";
+  el("playlists-list").innerHTML = "";
+}
+
 window.addEventListener("load", () => {
   const waitForGis = setInterval(() => {
     if (window.google && google.accounts && google.accounts.oauth2) {
@@ -39,6 +85,13 @@ window.addEventListener("load", () => {
         scope: SCOPE,
         callback: onTokenResponse,
       });
+
+      const stored = loadStoredAuth();
+      if (stored) {
+        accessToken = stored.accessToken;
+        markSignedIn();
+        loadPlaylists();
+      }
     }
   }, 100);
 });
@@ -52,11 +105,7 @@ el("signout-btn").addEventListener("click", () => {
   if (accessToken && window.google) {
     google.accounts.oauth2.revoke(accessToken, () => {});
   }
-  accessToken = null;
-  el("signin-btn").classList.remove("hidden");
-  el("signout-btn").classList.add("hidden");
-  el("playlists-status").textContent = "Sign in to load your playlists.";
-  el("playlists-list").innerHTML = "";
+  markSignedOut();
 });
 
 function onTokenResponse(resp) {
@@ -65,8 +114,8 @@ function onTokenResponse(resp) {
     return;
   }
   accessToken = resp.access_token;
-  el("signin-btn").classList.add("hidden");
-  el("signout-btn").classList.remove("hidden");
+  saveAuth(accessToken, resp.expires_in);
+  markSignedIn();
   loadPlaylists();
 }
 
@@ -74,6 +123,10 @@ async function apiFetch(path) {
   const res = await fetch(`${API_BASE}${path}`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
+  if (res.status === 401) {
+    markSignedOut();
+    throw new Error("Your session expired — sign in again.");
+  }
   if (!res.ok) {
     const body = await res.text();
     throw new Error(`API error ${res.status}: ${body}`);
